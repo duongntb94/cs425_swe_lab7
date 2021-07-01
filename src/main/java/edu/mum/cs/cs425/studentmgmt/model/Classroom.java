@@ -18,7 +18,7 @@ public class Classroom {
 
     private String roomNumber;
 
-    @OneToMany(mappedBy = "classroom", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Student> students = new ArrayList<>();
 
     public Classroom() {

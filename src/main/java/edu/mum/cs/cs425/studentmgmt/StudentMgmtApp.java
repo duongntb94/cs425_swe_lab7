@@ -48,8 +48,8 @@ public class StudentMgmtApp implements CommandLineRunner {
         Classroom classroom4 = new Classroom("McLaughlin", "M113");
         Student student3 = new Student("000-61-0003", "Thong", "Anh", "Tran", 4.0, LocalDate.of(2020, 8, 24));
         Student student4 = new Student("000-61-0004", "Nhan", "Thanh", "Nguyen", 4.0, LocalDate.of(2020, 8, 24));
-        student3.setClassroom(classroom4);
-        student4.setClassroom(classroom4);
+        student3.setClassrooms(Arrays.asList(classroom4));
+        student4.setClassrooms(Arrays.asList(classroom4));
         classroom4.setStudents(Arrays.asList(student3, student4));
         Classroom classroomResult = saveClassroom(classroom4);
         System.out.print("Classroom result: " + classroomResult);

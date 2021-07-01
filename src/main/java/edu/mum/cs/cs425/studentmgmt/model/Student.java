@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.*;
 
 /**
  * @author duong at 7/1/21
@@ -37,9 +39,8 @@ public class Student {
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     private Transcript transcript;
 
-    @ManyToOne()
-    @JoinColumn(name = "classroom_id")
-    private Classroom classroom;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    private List<Classroom> classrooms = new ArrayList<>();
 
     public Student() {
     }
@@ -117,12 +118,12 @@ public class Student {
         this.transcript = transcript;
     }
 
-    public Classroom getClassroom() {
-        return classroom;
+    public List<Classroom> getClassrooms() {
+        return classrooms;
     }
 
-    public void setClassroom(Classroom classroom) {
-        this.classroom = classroom;
+    public void setClassrooms(List<Classroom> classrooms) {
+        this.classrooms = classrooms;
     }
 
     @Override
